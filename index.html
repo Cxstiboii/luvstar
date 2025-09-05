@@ -4,54 +4,123 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    
     <style>
-        .special-gothic-expanded-one-regular {
+        .special-gothic-expanded-one-600 {
             font-family: "Special Gothic Expanded One", sans-serif;
-            font-weight: 450;
+            font-weight: 550;
             font-style: normal;
         }
+
+        @keyframes fade-in-up {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+          }
+          
+          .animate-fade-in-up {
+            animation: fade-in-up 1s ease-out forwards;
+          }
+          
+          .delay-200 { animation-delay: 0.2s; }
+          .delay-400 { animation-delay: 0.4s; }
     </style>
 </head>
 <body>
 
-    <!--Nav Basico con algunas referencias de link-->
-    <nav class = "xl:flex items-center justify-between  px-40 py-2 shadow-md  sticky top-0 z-50 bg-white">
-            <div >
-                <a href=""><img src="/assets/luvstarLogo.svg" alt="" class = "w-40 h-auto"></a>
+    <!-- NAVBAR -->
+    <nav class="sticky top-0 z-50 bg-white shadow-md bg-white/20 shadow-lg ring-1 ring-black/2 ">
+
+        <!-- NAV DESKTOP -->
+        <div class="hidden lg:flex items-center justify-between px-30 py-2">
+            <!-- Logo -->
+            <div class="flex-shrink-0">
+                <a href="#">
+                    <img src="/assets/luvstarLogo.svg" alt="logo-luvstar" class="block w-40 h-auto">
+                </a>
             </div>
-                <div><a href="" class = "hover:text-gray-500 special-gothic-expanded-one-regular">Camisetas</a></a></div>
-                <div><a href="" class = "hover:text-gray-500 special-gothic-expanded-one-regular">Pantalones</a></a></div>
-                <div><a href="" class = "hover:text-gray-500 special-gothic-expanded-one-regular">Hoodies</a></a></div>
-                <div><a href="" class = "hover:text-gray-500 special-gothic-expanded-one-regular">Camisas</a></a></div>
-                <div><a href="" class = "hover:text-gray-500 special-gothic-expanded-one-regular">Cazadoras</a></a></div>
-                <div><a href="" class = "hover:text-gray-500 special-gothic-expanded-one-regular">Jeans</a></a></div>
-                <div><a href="" ><img src="/assets/icons8-search-100.svg" alt="" class = "w-6 h-auto"></a></div>
+
+            <div class="flex items-center justify-between gap-8"></div>
+                <a href="#" class="text-black font-extrabold hover:text-shadow-lg  special-gothic-expanded-one-600">Camisetas</a>
+                <a href="#" class="text-black font-extrabold hover:text-shadow-lg  special-gothic-expanded-one-600">Pantalones</a>
+                <a href="#" class="text-black font-extrabold hover:text-shadow-lg special-gothic-expanded-one-600">Hoodies</a>
+                <a href="#" class="text-black font-extrabold hover:text-shadow-lg  special-gothic-expanded-one-600">Camisas</a>
+                <a href="#" class="text-black font-extrabold hover:text-shadow-lg special-gothic-expanded-one-600">Cazadoras</a>
+                <a href="#" class=" hover:text-shadow-lg  special-gothic-expanded-one-600">Jeans</a>
+        </div>
+        </div>
+
+        <!-- NAV MOBILE -->
+        <div class="lg:hidden flex items-center justify-between px-10 py-4">
+            <!-- Logo -->
+            <a href="#">
+                <img src="/assets/luvstarLogo.svg" alt="logo-luvstar" class="w-40 h-auto">
+            </a>
+
+            <!-- Botón Hamburguesa -->
+            <div class="relative z-50">
+                <!-- Input oculto para controlar el menú -->
+                <input id="menu-checkbox" type="checkbox" class="peer hidden" />
+
+                <!-- Icono Hamburguesa -->
+                <label for="menu-checkbox" class="flex flex-col gap-1 cursor-pointer">
+                    <span class="block w-6 h-0.5 bg-black transition-all peer-checked:rotate-45 peer-checked:translate-y-1.5"></span>
+                    <span class="block w-6 h-0.5 bg-gray-800 transition-all peer-checked:opacity-0"></span>
+                    <span class="block w-6 h-0.5 bg-gray-800 transition-all peer-checked:-rotate-45 peer-checked:-translate-y-1.5"></span>
+                </label>
+
+                <!-- Sidebar -->
+                <ul
+                    class="fixed top-0 left-0 w-64 h-full bg-white shadow-lg py-20 px-10 space-y-6 transform -translate-x-full transition-transform duration-700 ease-in-out peer-checked:translate-x-0">
+
+                    <!-- Logo -->
+                    <li class="my-6">
+                        <a href="#">
+                            <img src="/assets/luvstarLogo.svg" alt="logo-luvstar" class="w-50 h-auto border-b-1">
+                        </a>
+                    </li>
+
+                    <li><a href="#" class="block text-xl text-black font-extrabold hover:text-gray-900 special-gothic-expanded-one-regular ">Camisetas</a></li>
+                    <li><a href="#" class="block text-xl text-black font-extrabold hover:text-gray-900 special-gothic-expanded-one-regular b">Pantalones</a></li>
+                    <li><a href="#" class="block text-xl text-black font-extrabold hover:text-gray-900 special-gothic-expanded-one-regular">Hoodies</a></li>
+                    <li><a href="#" class="block text-xl text-black font-extrabold hover:text-gray-900 special-gothic-expanded-one-regular">Camisas</a></li>
+                    <li><a href="#" class="block text-xl text-black font-extrabold hover:text-gray-900 special-gothic-expanded-one-regular">Cazadoras</a></li>
+                    <li><a href="#" class="block text-xl text-black font-extrabold hover:text-gray-900 special-gothic-expanded-one-regular">Jeans</a></li>
+                </ul>
+            </div>
         </div>
     </nav>
 
         <main>
-            <!--Hero Section de Landing Page-->
-            <section>
-                <div>
-                    <h1>Hero Section</h1>
+            <!-- Hero Section con video de fondo -->
+            <section class="relative h-screen overflow-hidden">
+                <!-- Video de fondo -->
+                <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover z-0">
+                    <source src="/assets/video/5529964-hd_720_1280_25fps.mp4" type="video/mp4">
+                </video>
+
+                <!-- Imagen superpuesta -->
+                <div class="absolute inset-0 flex items-center justify-center z-10">
+                    <img src="/assets/image-_1_.svg" alt="Logo" class="w-48 opacity-90">
                 </div>
             </section>
 
-            
-        
-
-            
             <!--Seccion Camisetas-->
-            <section class = "xl:grid grid-cols-4 gap-12 p-12  rounded-2xl shadow-lg m-4 border-gray-300 border-1">
-
-                    <div class="col-start-1 col-end-2 max-w-sm bg-white rounded-2xl border-gray-300 shadow-lg p-4 border-1">
-
+            <h1 class="xl:mx-14 mx-6 mt-20">
+                <span class="text-3xl block special-gothic-expanded-one-600 ">Camisetas</span>
+                <a href="#" class="text-md font-semibold  border-black inline-block hover:border-b-1">Ver más</a>
+            </h1>
+            <section class = "
+                flex overflow-x-auto scroll-smooth snap-x snap-mandatory gap-6 xl:mx-12 xl:my-0 mx-4 py-2
+                md:grid md:grid-cols-2 md:gap-12
+                xl:grid-cols-4
+                justify-items-center
+                ">
+                    <!--Objeto Uno-->
+                    <div class="snap-start flex-shrink-0 xl:w-auto w-max  max-w-sm rounded-2xl bg-white rounded-2xl border-gray-300 shadow-lg p-4 border-1  ">
                         <div class = "bg-gray-200 rounded-2xl p-4">
                             <!--Insginia y Corazon-->
-                            <div class = "flex justify-between items-center ">
+                            <div class = "flex justify-between items-center">
                                 <span class = "bg-gray-100 text-gray-600 text-sm px-3 py-1 rounded-full">Mas Vendida</span>
-                                <button class = "text-red-5500">
+                                <button class = "">
                                     ♥️
                                 </button>
                             </div>
@@ -60,7 +129,6 @@
                                 <img src="/assets/Camisetas/Camisa_Uno_Anverso-removebg-preview.png" alt="Camisa 1 de Luvstar" class = "w-auto h-auto object-contain">
                             </div>
                         </div>
-
                         <!--Texto-->
                         <h3 class="text-gray-800 font-bold text-lg special-gothic-expanded-one-regular">Camisa Evangelion</h3>
                         <p class="text-gray-500">$90.000</p>
@@ -70,8 +138,8 @@
                         </button>
                     </div>
                     
-
-                    <div class="col-start-2 col-end-3 max-w-sm bg-white rounded-2xl border-gray-300 shadow-lg p-5 border-1 ">
+                    <!--Objeto Dos-->
+                    <div class="snap-start flex-shrink-0 xl:w-auto w-max max-w-sm rounded-2xl bg-white rounded-2xl border-gray-300 shadow-lg p-5 border-1 ">
                         <!--Insginia y Corazon-->
                         <div class = "bg-gray-200 rounded-2xl p-4">
                             <div class = "bg-gray-200 flex justify-between items-center ">
@@ -95,8 +163,8 @@
                         </button>
                     </div>
 
-                    <div class="col-start-3 col-end-4 max-w-sm bg-white rounded-2xl border-gray-300 shadow-lg p-5 border-1">
-
+                    <!--Objeto Tres-->
+                    <div class="snap-start flex-shrink-0 xl:w-auto w-max max-w-sm rounded-2xl bg-white rounded-2xl border-gray-300     shadow-lg p-5 border-1">
                         <div class = "bg-gray-200 rounded-2xl p-4">
                             <!--Insginia y Corazon-->
                             <div class = "flex justify-between items-center">
@@ -111,18 +179,15 @@
                             </div>
                         </div>
                         <!--Texto-->
-                        
                         <h3 class="text-gray-800 font-bold text-lg special-gothic-expanded-one-regular">Camisa Evangelion</h3>
                         <p class="text-gray-500">$90.000</p>
-                        
                         <button class = "w-full mt-4 bg-black text-white py-2 rounded-full hover:bg-gray-400 transition">
                             Comprar
                         </button>
                     </div>
 
-
-
-                    <div class="col-start-4 col-end-5 max-w-sm bg-white rounded-2xl border-gray-300 shadow-lg p-5 border-1 ">
+                    <!--Objeto Cuatro-->
+                    <div class="snap-start flex-shrink-0 xl:w-auto w-max max-w-sm rounded-2xl bg-white rounded-2xl border-gray-300 shadow-lg p-5 border-1 ">
                         <!--Insginia y Corazon-->
                         <div class = "bg-gray-200 rounded-2xl p-4">
                             <div class = "flex justify-between items-center">
@@ -137,7 +202,6 @@
                             </div>
                         </div>
                         <!--Texto-->
-                        
                         <h3 class="text-gray-800 font-bold text-lg special-gothic-expanded-one-regular">Camisa Evangelion</h3>
                         <p class="text-gray-500">$90.000</p>
                         
@@ -145,10 +209,6 @@
                             Comprar
                         </button>
                     </div>
-
-
-
-        
             </section>
 
             <!--Seccion Pantalones-->
@@ -185,13 +245,29 @@
 
 <script 
     src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4">
+    
+    //Menu responsive para celulares
+    const toggleBtn = document.getElementById("menu-toggle");
+    const mobileMenu = document.getElementById("mobile-menu");
 
-    //Script para que las imagenes se muevan
+    toggleBtn.addEventListener("click", () => {
+    mobileMenu.classList.toggle("hidden");
+    });
 
-    const imagenes = [
-        "/assets/"
-    ]
+    //Buscador
+    const btnBuscar = document.getElementById("btnBuscar");
+    const menuBuscar = document.getElementById("menuBuscar");
+    btnBuscar.addEventListener("click", (e) => {
+    e.preventDefault();
+    menuBuscar.classList.toggle("hidden");
+    });
 
+  // Opcional: cerrar al hacer clic fuera
+    document.addEventListener("click", (e) => {
+    if (!btnBuscar.contains(e.target) && !menuBuscar.contains(e.target)) {
+        menuBuscar.classList.add("hidden");
+        }
+    });
 </script>
 
 </html>
